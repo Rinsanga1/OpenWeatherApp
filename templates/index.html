@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width= device-width", "initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Search Weather</title>
+</head>
+
+<body>
+    <form action='/' method = 'post'>
+        <label>City Name</label>
+        <input type="text" id="city" name="city" placeholder="City" required>
+        <br>
+        <label>State Name</label>
+        <input type="text" id="state" name="state" placeholder="State" required>
+        <br>
+        <label>Country Name</label>
+        <input type="text" id="country" name="country" placeholder="Country" required>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+
+    <div class = "weather-div">
+        {% if weather_data %}
+        <h2>Weather Information </h2>
+        <p><b>City</b> : {{ weather_data.city}}</p>
+        <p><b>Weather</b>: {{ weather_data.weather }}</p>
+        <p><b>Temperature</b>: {{ weather_data.temperature }} Celsius</p>
+        <p><b>Humidity</b>: {{ weather_data.humidity }} %</p>
+        {% endif %}
+    </div>
+
+    
+
+</body>
+
+</html>
