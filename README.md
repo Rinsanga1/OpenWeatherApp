@@ -13,7 +13,7 @@ This is a simple Flask application for checking weather conditions based on user
 1. Clone the repository:
 
     ```bash
-    git clone 
+    git clone https://github.com/Rinsanga1/OpenWeatherApp.git
     ```
 
 2. Navigate to the project directory:
