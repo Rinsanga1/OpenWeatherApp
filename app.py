@@ -2,6 +2,7 @@ from flask import Flask , render_template , request
 from OpenWeather import search_weather
 
 app = Flask(__name__)
+enter_your_api_key
 
 @app.route('/', methods = ('GET','POST'))
 def weather():

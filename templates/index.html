@@ -22,15 +22,15 @@
         <input type="submit" value="Search">
     </form>
 
-    <div class = "weather-div">
         {% if weather_data %}
+    <div class = "weather-div">
         <h2>Weather Information </h2>
         <p><b>City</b> : {{ weather_data.city}}</p>
         <p><b>Weather</b>: {{ weather_data.weather }}</p>
         <p><b>Temperature</b>: {{ weather_data.temperature }} Celsius</p>
         <p><b>Humidity</b>: {{ weather_data.humidity }} %</p>
-        {% endif %}
     </div>
+        {% endif %}
 
     
 
