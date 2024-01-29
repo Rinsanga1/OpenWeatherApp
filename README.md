@@ -16,7 +16,13 @@ This is a simple Flask application for checking weather conditions based on user
     git clone https://github.com/Rinsanga1/OpenWeatherApp.git
     ```
 
-22 Install the required dependencies:
+2. Navigate to the project directory:
+
+    ```bash
+    cd OpenWeather
+    ```
+
+3. Install the required dependencies:
 
     ```bash
     pip install flask
@@ -38,12 +44,18 @@ This is a simple Flask application for checking weather conditions based on user
     API_KEY=your_openweather_api_key
     ```
 
-3. Run the Flask application(make sure you are in parent dir ;not in the OpenWeather dir):
+3. Run the Flask application:
 
     ```bash
-    flask --app OpenWeather run
+    flask --app flaskr run
     ```
 
-4. Open your web browser and go to [http://localhost:5000/](http://localhost:5000/).
+3.1 Run the Flask application(for debug):
+
+    ```bash
+    flask --app flaskr run --debug
+    ```
+
+4. Open your web browser and go to the host provided when you run flask
 
 5. Enter the city, state, and country in the form and click "Search" to get weather information. eg : Aizawl , MZ , India
