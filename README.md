@@ -23,11 +23,11 @@ This is a simple Flask application for checking weather conditions based on user
 3. Activate the python virtual environment(type 'deavtivate' to quit)
 
     ```bash
-    cd OpenWeather
+    cd OpenWeatherApp
     source venv/bin/activate
     ```
 
-3. Run the Flask application( at the end for debug):
+3. Run the Flask application:
 
     ```bash
     flask run 
