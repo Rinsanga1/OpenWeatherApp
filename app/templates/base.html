@@ -9,28 +9,22 @@
 </head>
 
 <body>
+
     <form action='/' method = 'post'>
-        <label>City Name</label>
-        <input type="text" id="city" name="city" placeholder="City" required>
-        <br>
-        <label>State Name</label>
-        <input type="text" id="state" name="state" placeholder="State" required>
-        <br>
-        <label>Country Name</label>
-        <input type="text" id="country" name="country" placeholder="Country" required>
-        <br>
-        <input type="submit" value="Search">
+        <p>{{ form.city_form.label }}</p>
+        <p>{{ form.city_form(size=32) }}</p>
+        <p>{{ form.submit_form }}</p>
     </form>
 
-        {% if weather_data %}
+    {% if weather_data %}
     <div class = "weather-div">
         <h2>Weather Information </h2>
-        <p><b>City</b> : {{ weather_data.city}}</p>
+        <p><b>City</b> : {{ form.city_form.data }}</p>
         <p><b>Weather</b>: {{ weather_data.weather }}</p>
         <p><b>Temperature</b>: {{ weather_data.temperature }} Celsius</p>
         <p><b>Humidity</b>: {{ weather_data.humidity }} %</p>
     </div>
-        {% endif %}
+    {% endif %}
 
     
 

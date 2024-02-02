@@ -1,3 +1,6 @@
+from app import app,db
+from app.models import CSC
+import sqlalchemy as sa
 import requests
 from dotenv import load_dotenv
 import os
@@ -6,8 +9,11 @@ load_dotenv()
 api_key = os.getenv('API_KEY')
 
 
-def search_weather(city,state,country):
-    lat,lon = lat_lon(city,state,country,api_key)
+def search_weather(city1):
+    buffer=CSC.query.filter_by(city=city1).first()
+    state = buffer.stateCode
+    country = buffer.country
+    lat,lon = lat_lon(city1,state,country,api_key)
     weather_data = weather(lat,lon,api_key)
     return weather_data
 

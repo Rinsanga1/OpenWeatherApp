@@ -6,30 +6,6 @@ This is a simple Flask application for checking weather conditions based on user
 ## Prerequisites
 
 - Python 3 or higher
-- [Pip](https://pip.pypa.io/en/stable/installation/) (Python package installer)
-
-## Installation
-
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/Rinsanga1/OpenWeatherApp.git
-    ```
-
-2. Navigate to the project directory:
-
-    ```bash
-    cd OpenWeather
-    ```
-
-3. Install the required dependencies:
-
-    ```bash
-    pip install flask
-    pip install requests 
-    pip install python-dotenv
-
-    ```
 
 ## Usage
 
@@ -44,16 +20,17 @@ This is a simple Flask application for checking weather conditions based on user
     API_KEY=your_openweather_api_key
     ```
 
-3. Run the Flask application:
+3. Activate the python virtual environment(type 'deavtivate' to quit)
 
     ```bash
-    flask --app flaskr run
+    cd OpenWeather
+    source venv/bin/activate
     ```
 
-3.1 Run the Flask application(for debug):
+3. Run the Flask application( at the end for debug):
 
     ```bash
-    flask --app flaskr run --debug
+    flask run 
     ```
 
 4. Open your web browser and go to the host provided when you run flask
