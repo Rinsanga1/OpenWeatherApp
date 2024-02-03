@@ -53,3 +53,12 @@ p {
     text-align:center;
 }
 
+#suggestions {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#suggestions li {
+    margin-bottom: 5px;
+}

@@ -5,6 +5,7 @@
     <meta charset = "UTF-8">
     <meta name="viewport" content="width= device-width", "initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Search Weather</title>
 </head>
 
@@ -12,9 +13,31 @@
 
     <form action='/' method = 'post'>
         <p>{{ form.city_form.label }}</p>
-        <p>{{ form.city_form(size=32) }}</p>
+        <p>{{ form.city_form(size=32, id="cityInput") }}</p>
+        <ul id="suggestions"></ul>
         <p>{{ form.submit_form }}</p>
     </form>
+
+    <script>
+        $(document).ready(function () {
+            $('#cityInput').on('input', function () {
+                var searchTerm = $(this).val();
+
+                $.ajax({
+                    url: '/suggestion',
+                    data: { term: searchTerm },
+                    success: function (data) {
+                        var suggestionsList = $('#suggestions');
+                        suggestionsList.empty();
+
+                        for (var i = 0; i < data.length; i++) {
+                            suggestionsList.append('<li>' + data[i] + '</li>');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
     {% if weather_data %}
     <div class = "weather-div">
@@ -26,7 +49,7 @@
     </div>
     {% endif %}
 
-    
+
 
 </body>
 
