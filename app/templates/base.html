@@ -34,7 +34,6 @@
                             var listItem = $('<li>').text(data[i]);
                             suggestionsList.append(listItem);
 
-                            // Add click event to each list item
                             listItem.click(function () {
                                 $('#cityInput').val($(this).text());
                                 suggestionsList.empty();
