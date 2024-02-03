@@ -20,10 +20,9 @@ This is a simple Flask application for checking weather conditions based on user
     API_KEY=your_openweather_api_key
     ```
 
-3. Activate the python virtual environment(type 'deavtivate' to quit)
+3. Activate the python virtual environment
 
     ```bash
-    cd OpenWeatherApp
     source venv/bin/activate
     ```
 
@@ -35,4 +34,4 @@ This is a simple Flask application for checking weather conditions based on user
 
 4. Open your web browser and go to the host provided when you run flask
 
-5. Enter the city, state, and country in the form and click "Search" to get weather information. eg : Aizawl , MZ , India
+5. Enter the city you want.
