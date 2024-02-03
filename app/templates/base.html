@@ -31,12 +31,20 @@
                         suggestionsList.empty();
 
                         for (var i = 0; i < data.length; i++) {
-                            suggestionsList.append('<li>' + data[i] + '</li>');
+                            var listItem = $('<li>').text(data[i]);
+                            suggestionsList.append(listItem);
+
+                            // Add click event to each list item
+                            listItem.click(function () {
+                                $('#cityInput').val($(this).text());
+                                suggestionsList.empty();
+                            });
                         }
                     }
                 });
             });
         });
+
     </script>
 
     {% if weather_data %}
