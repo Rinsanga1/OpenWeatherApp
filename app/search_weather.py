@@ -9,22 +9,15 @@ load_dotenv()
 api_key = os.getenv('API_KEY')
 
 
-def search_weather(city1):
-    buffer=CSC.query.filter_by(city=city1).first()
-    state = buffer.stateCode
+def search_weather(cityi):
+    buffer=CSC.query.filter_by(city=cityi).first()
+    lat= buffer.lat
+    lon= buffer.lon
+    state = buffer.state
     country = buffer.country
-    lat,lon = lat_lon(city1,state,country,api_key)
-    weather_data = weather(lat,lon,api_key)
-    return weather_data
+    w,temperature,humidity = weather(lat,lon,api_key)
+    return state,country,w,temperature,humidity
 
-
-
-def lat_lon(city,state,country,api_key):
-    url = f'http://api.openweathermap.org/geo/1.0/direct?q={city},{state},{country}&appid={api_key}'
-    response = requests.get(url).json()
-    lat=response[0].get('lat')
-    lon=response[0].get('lon')
-    return lat,lon
 
 
 def weather(lat,lon,api_key):

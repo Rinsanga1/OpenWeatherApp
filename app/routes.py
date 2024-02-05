@@ -14,8 +14,8 @@ def weather():
     form = City_Form()
     weather_data = None
     if request.method == 'POST':
-        weather, temperature, humidity = search_weather(form.city_form.data)
-        weather_data = {'weather': weather,
+        state,country,weather, temperature, humidity = search_weather(form.city_form.data)
+        weather_data = {'state': state, 'country': country , 'weather': weather,
                         'temperature': temperature, 'humidity': humidity}
     return render_template('base.html', form=form, weather_data=weather_data)
 

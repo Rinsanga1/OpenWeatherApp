@@ -49,7 +49,7 @@
     {% if weather_data %}
     <div class = "weather-div">
         <h2>Weather Information </h2>
-        <p><b>City</b> : {{ form.city_form.data }}</p>
+        <p><b>Place</b>: {{ form.city_form.data }} ,{{ weather_data.state}}, {{ weather_data.country}}</p>
         <p><b>Weather</b>: {{ weather_data.weather }}</p>
         <p><b>Temperature</b>: {{ weather_data.temperature }} Celsius</p>
         <p><b>Humidity</b>: {{ weather_data.humidity }} %</p>
