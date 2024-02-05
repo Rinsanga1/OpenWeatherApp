@@ -30,9 +30,9 @@
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
 
-                        for (var i = 0; i < data.length; i++) {
-                            var listItem = $('<li>').text(data[i]);
-                            suggestionsList.append(listItem);
+                    for (var i = 0; i < Math.min(data.length, 10); i++) {
+                        var listItem = $('<li>').text(data[i]);
+                        suggestionsList.append(listItem);
 
                             listItem.click(function () {
                                 $('#cityInput').val($(this).text());
