@@ -34,4 +34,4 @@ This is a simple Flask application for checking weather conditions based on user
 
 4. Open your web browser and go to the host provided when you run flask
 
-5. Enter the city you want.
+5. Enter the city you want and press Search.
