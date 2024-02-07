@@ -15,8 +15,10 @@
         <p>{{ form.city_form.label }}</p>
         <p>{{ form.city_form(size=32, id="cityInput") }}</p>
         <ul id="suggestions"></ul>
-        <p>{{ form.submit_form }}</p>
+        <!-- <p>{{ form.submit_form }}</p> -->
     </form>
+    <div class="notification" id="cityNotFoundNotification"></div>
+
 
     <script>
         $(document).ready(function () {
@@ -30,31 +32,59 @@
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
 
-                    for (var i = 0; i < Math.min(data.length, 10); i++) {
-                        var listItem = $('<li>').text(data[i]);
-                        suggestionsList.append(listItem);
+                        for (var i = 0; i < Math.min(data.length, 10); i++) {
+                            var listItem = $('<li>').text(data[i]);
+                            suggestionsList.append(listItem);
 
                             listItem.click(function () {
                                 $('#cityInput').val($(this).text());
-                                suggestionsList.empty();
+                                $('form').submit();
                             });
                         }
                     }
                 });
             });
+
+            $('#cityInput').on('keypress', function(event) {
+                if (event.keyCode === 13) {
+                    var topSuggestion = $('#suggestions li:first-child').text();
+                    $('#cityInput').val(topSuggestion);
+                    $('form').submit();
+                }
+            });
         });
 
+        function validateInput() {
+            var input = $('#cityInput').val();
+            var suggestions = $('[id^="suggestions"] li').map(function() {
+                return $(this).text();
+            }).get();
+            if (!suggestions.includes(input)) {
+                $('#cityNotFoundNotification').text('City not found.').fadeIn().delay(2000).fadeOut();
+                return false;
+            }
+            return true;
+        }
+
+        $('form').submit(function() {
+            if (!validateInput()) {
+                return false;
+            }
+        });
     </script>
 
     {% if weather_data %}
     <div class = "weather-div">
         <h2>Weather Information </h2>
-        <p><b>Place</b>: {{ form.city_form.data }} ,{{ weather_data.state}}, {{ weather_data.country}}</p>
+        <p><b>Place</b>: {{ form.city_form.data }}, {{ weather_data.state}}, {{ weather_data.country}}</p>
         <p><b>Weather</b>: {{ weather_data.weather }}</p>
-        <p><b>Temperature</b>: {{ weather_data.temperature }} Celsius</p>
+        <p><b>Temperature</b>: {{ weather_data.temperature }}°C</p>
         <p><b>Humidity</b>: {{ weather_data.humidity }} %</p>
     </div>
     {% endif %}
+
+    {% block content%}
+    {% endblock %}
 
 
 

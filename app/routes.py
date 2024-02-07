@@ -1,9 +1,9 @@
+from app import app, db, errors
 from flask import Flask, json, render_template, request, jsonify
+import sqlalchemy as sa
 from app.search_weather import search_weather
 from app.forms import City_Form
-from app import app, db
 from app.models import CSC
-import sqlalchemy as sa
 
 app.app_context().push()
 cities = db.session.scalars(sa.select(CSC.city)).all()
@@ -26,3 +26,4 @@ def suggest_city():
     suggestions = [city for city in cities if term.lower() in city.lower()]
 
     return jsonify(suggestions)
+

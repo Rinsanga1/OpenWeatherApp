@@ -9,29 +9,19 @@ This is a simple Flask application for checking weather conditions based on user
 
 ## Usage
 
-1. Set up your OpenWeather API key:
-
-    - [Sign up](https://home.openweathermap.org/users/sign_up) for a free OpenWeather account.
-    - Obtain your API key from the OpenWeather dashboard.
-
-2. Modify the `.env` file in the project root and add your API key:
-
-    ```dotenv
-    API_KEY=your_openweather_api_key
-    ```
-
-3. Activate the python virtual environment
+1. Activate the python virtual environment
 
     ```bash
+    ../OpenWeatherApp/
     source venv/bin/activate
     ```
 
-3. Run the Flask application:
+2. Run the Flask application:
 
     ```bash
     flask run 
     ```
 
-4. Open your web browser and go to the host provided when you run flask
+3. Open your web browser and go to the host provided when you run flask
 
-5. Enter the city you want and press Search.
+4. Enter the city you want and press Search.
