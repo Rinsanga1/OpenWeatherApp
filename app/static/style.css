@@ -63,10 +63,15 @@ p {
 
 }
 
+.location-div{
+    color: #FFFFFF;
+    text-align:center;
+    padding-top: 50px;
+}
+
 #suggestions {
     list-style-type: none;
     padding: 0;
-    background-color: #f0f0f0; 
     margin: 0;
 }
 
@@ -80,6 +85,33 @@ p {
 #suggestions li:hover {
     background-color: #ccc; 
 }
+
+
+#suggestions li {
+    posiion ; absolute
+    margin-bottom: 12px; 
+    padding: 8px;
+}
+
+#suggestions li:hover {
+    background-color: #ccc; 
+}
+
+#weather-data {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: rgba(64, 64, 64, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    outline:none;
+    list-style-type: none;
+}
+
+#weather-data li {
+    margin-bottom: 12px; 
+    padding: 10px;
+}
+
 
 
 .notification {
