@@ -13,7 +13,7 @@
 
     <form action='/' method = 'post'>
         <p>{{ form.city_form.label }}</p>
-        <p>{{ form.city_form(size=32, id="cityInput") }}</p>
+        <p placeholder="Enter City">{{ form.city_form(size=32, id="cityInput") }}</p>
         <ul id="suggestions"></ul>
         <!-- <p>{{ form.submit_form }}</p> -->
     </form>
@@ -75,11 +75,15 @@
 
     {% if weather_data %}
     <div class = "weather-div">
-        <h2>Weather Information </h2>
-        <p><b>Place</b>: {{ form.city_form.data }}, {{ weather_data.state}}, {{ weather_data.country}}</p>
+        <p><b>{{ form.city_form.data }}, {{ weather_data.state}}, {{ weather_data.country}}</b></p>
+        <img = src="https://openweathermap.org/img/wn/{{weather_data.icon}}@2x.png">
         <p><b>Weather</b>: {{ weather_data.weather }}</p>
+        <p><b>Humidity</b>: {{ weather_data.humidity }}%</p>
+        <p><b>Wind Speed</b>: {{ weather_data.windspeed}}m/s</p>
         <p><b>Temperature</b>: {{ weather_data.temperature }}°C</p>
-        <p><b>Humidity</b>: {{ weather_data.humidity }} %</p>
+        <p><b>Feels Like</b>: {{ weather_data.feelslike}}°C</p>
+        <p><b>Sunrise</b>: {{ weather_data.sunrise }}AM</p>
+        <p><b>Sunset</b>: {{ weather_data.sunset }}PM</p>
     </div>
     {% endif %}
 

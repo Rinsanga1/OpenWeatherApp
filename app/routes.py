@@ -1,4 +1,4 @@
-from app import app, db, errors
+from app import app, db
 from flask import Flask, json, render_template, request, jsonify
 import sqlalchemy as sa
 from app.search_weather import search_weather
@@ -14,9 +14,9 @@ def weather():
     form = City_Form()
     weather_data = None
     if request.method == 'POST':
-        state,country,weather, temperature, humidity = search_weather(form.city_form.data)
-        weather_data = {'state': state, 'country': country , 'weather': weather,
-                        'temperature': temperature, 'humidity': humidity}
+        sunrise,sunset,temp,humidity,wether,windspeed,feelslike,icon,state,country = search_weather(form.city_form.data)
+        weather_data = {'state': state, 'country': country , 'weather': wether,'sunrise': sunrise, 'sunset': sunset,
+                        'temperature': temp, 'humidity': humidity , 'windspeed' : windspeed , 'feelslike': feelslike ,'icon': icon}
     return render_template('base.html', form=form, weather_data=weather_data)
 
 
@@ -24,6 +24,5 @@ def weather():
 def suggest_city():
     term = request.args.get('term')
     suggestions = [city for city in cities if term.lower() in city.lower()]
-
     return jsonify(suggestions)
 
