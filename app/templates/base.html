@@ -15,6 +15,7 @@
     <div class="location-div">
         <p><b>Location</b></p>
         <p>{{ form.city_form.data }}, {{ weather_data.state}}, {{ weather_data.country}}</p>
+        <p>{{weather_data.localdt}}</p>
     </div>
     {% endif %}
 
@@ -89,8 +90,8 @@
         <li><b>Feels Like</b>: {{ weather_data.feelslike}}°C</li>
         <li><b>Humidity</b>: {{ weather_data.humidity }}%</li>
         <li><b>Wind Speed</b>: {{ weather_data.windspeed}}Km/h</li>
-        <li><b>Sunrise</b>: {{ weather_data.sunrise }}AM</li>
-        <li><b>Sunset</b>: {{ weather_data.sunset }}PM</li>
+        <li><b>Sunrise</b>: {{ weather_data.sunrise }}</li>
+        <li><b>Sunset</b>: {{ weather_data.sunset }}</li>
         </ul>
     </div>
     {% endif %}

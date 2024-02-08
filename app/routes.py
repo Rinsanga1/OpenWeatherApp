@@ -14,9 +14,12 @@ def weather():
     form = City_Form()
     weather_data = None
     if request.method == 'POST':
-        sunrise,sunset,temp,humidity,wether,windspeed,feelslike,icon,state,country = search_weather(form.city_form.data)
-        weather_data = {'state': state, 'country': country , 'weather': wether,'sunrise': sunrise, 'sunset': sunset,
-                        'temperature': temp, 'humidity': humidity , 'windspeed' : windspeed , 'feelslike': feelslike ,'icon': icon}
+        sunrise,sunset,temp,humidity,wether,windspeed,feelslike,icon,ldt,state,country = search_weather(form.city_form.data)
+        weather_data = {'state': state, 'country': country , 
+                        'weather': wether,'sunrise': sunrise, 'sunset': sunset,
+                        'temperature': temp, 'humidity': humidity , 
+                        'windspeed' : windspeed , 'feelslike': feelslike ,
+                        'icon': icon, 'localdt':ldt}
     return render_template('base.html', form=form, weather_data=weather_data)
 
 
