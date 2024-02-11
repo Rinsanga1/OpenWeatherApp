@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset = "UTF-8">
     <meta name="viewport" content="width= device-width", "initial-scale=1">
@@ -9,22 +10,28 @@
     <title>Search Weather</title>
 </head>
 
+
 <body>
 
     {% if weather_data %}
     <div class="location-div">
+
         <p><b>Location</b></p>
         <p>{{ form.city_form.data }}, {{ weather_data.state}}, {{ weather_data.country}}</p>
         <p>{{weather_data.localdt}}</p>
+
     </div>
     {% endif %}
+
 
     <form action='/' method = 'post'>
         <p>{{ form.city_form.label }}</p>
         <p placeholder="Enter City">{{ form.city_form(size=32, id="cityInput") }}</p>
+
         <ul id="suggestions"></ul>
-        <!-- <p>{{ form.submit_form }}</p> -->
     </form>
+
+
     <div class="notification" id="cityNotFoundNotification"></div>
 
 
@@ -38,6 +45,7 @@
                     data: { term: searchTerm },
                     success: function (data) {
                         var suggestionsList = $('#suggestions');
+
                         suggestionsList.empty();
 
                         for (var i = 0; i < Math.min(data.length, 10); i++) {
@@ -53,38 +61,48 @@
                 });
             });
 
+
             $('#cityInput').on('keypress', function(event) {
                 if (event.keyCode === 13) {
                     var topSuggestion = $('#suggestions li:first-child').text();
+
                     $('#cityInput').val(topSuggestion);
                     $('form').submit();
                 }
             });
         });
 
+
         function validateInput() {
             var input = $('#cityInput').val();
             var suggestions = $('[id^="suggestions"] li').map(function() {
+
                 return $(this).text();
             }).get();
+
             if (!suggestions.includes(input)) {
                 $('#cityNotFoundNotification').text('City not found.').fadeIn().delay(2000).fadeOut();
+
                 return false;
             }
+
             return true;
         }
 
         $('form').submit(function() {
             if (!validateInput()) {
+
                 return false;
             }
         });
     </script>
 
+
     {% if weather_data %}
     <div class = "weather-div">
         <img = src="https://openweathermap.org/img/wn/{{weather_data.icon}}@2x.png">
         <ul id = "weather-data">
+
         <li><b>Weather</b>: {{ weather_data.weather }}</li>
         <li><b>Temperature</b>: {{ weather_data.temperature }}°C</li>
         <li><b>Feels Like</b>: {{ weather_data.feelslike}}°C</li>
@@ -92,9 +110,12 @@
         <li><b>Wind Speed</b>: {{ weather_data.windspeed}}Km/h</li>
         <li><b>Sunrise</b>: {{ weather_data.sunrise }}</li>
         <li><b>Sunset</b>: {{ weather_data.sunset }}</li>
+
         </ul>
+
     </div>
     {% endif %}
+
 
     {% block content%}
     {% endblock %}
